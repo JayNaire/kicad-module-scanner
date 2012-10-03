@@ -3,6 +3,7 @@
 	<name>kicad-module-scanner</name>
 	<comment></comment>
 	<projects>
+		<project>FootprintWidget</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
