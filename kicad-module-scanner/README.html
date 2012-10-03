@@ -16,22 +16,24 @@
 	<b>Requires:</b>
 	<br>Qt sdk (qmake, uic etc.)
 	<a href="http://qt.nokia.com/downloads">http://qt.nokia.com/downloads</a><br>
-	<br><strike>A Postscript viewer - okular preferred</strike>
+	<br><strike>A Postscript viewer - okular preferred</strike> FootprintWidget is used now.<br>flex
 	<br>gawk (GNU awk)
-	<br>bash + the standard GNU core utilities C++ compiler
+	<br>bash + the standard GNU core utilities<br> C++ compiler
 	<br>
 	<br>
 	<b>To compile:</b>
 	<br>If not using Eclipse then:
 	<br>
-	<br>cd /wherever/you/unpacked/the/archive
-	<br>check that kicad_module_scanner.pro is in the current
-	directory (if it isn't you may need to change to a subdirectory)
-	<br>qmake
+	<br>cd /wherever/you/unpacked/the/archive<br>check there are two directories FootprintWidget and  kicad_module_scanner
+	<br>cd FootprintWidget<br>check that FootprintWidget.pro is in the current
+	directory<br>qmake
+	<br>make -f Makefile.Release<br>should produce an library called libFootprintWidget.so in Release subfolder<br>
+	cd ../kicad_module_scanner.pro<br>check that kicad_module_scanner.pro is in the current
+	directory<br>qmake
 	<br>make -f Makefile.Release
 	<br>
-	<br>should produce an executable called kicad_module_scanner
-	<br>
+	<br>should produce an executable called kicad_module_scanner 
+	in Release subfolder<br>
 	<br>
 	<b>Test run:</b>
 	<br>cd /wherever/you/unpacked/the/archive
@@ -67,7 +69,7 @@
 	about them so be warned! Pins without copper annular rings are holes
 	but are not properly dealt with.
 	<br>
-	<br>Postscript Viewer Notes:
+	<br><strike>Postscript Viewer Notes:
 	<br>Pin 1 is always drawn in red - but holes (see above) may mean
 	you don't see them as when Pin 1 is actually, say, a heatsink mounting
 	hole. Pin Pitch dx, dy dimensions should be accurate; "Footprint XxY"
@@ -75,7 +77,7 @@
 	daft, don't blame kms. Some mod files on the web are indeed daft. Some
 	footprints converted from other PCB programs do not get pin rotation
 	correct so they look wrong in kms. (They look wrong in Kicad too.) You
-	have to use Kicad's module editor to sort them out.
+	have to use Kicad's module editor to sort them out.</strike>
 	<br>
 	<br>Enjoy!.
 	<br>

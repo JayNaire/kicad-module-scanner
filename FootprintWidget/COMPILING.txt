@@ -1,10 +1,37 @@
 Compiling.
 
-kmp.l
-    this is processed normally with flex via the makefiles produced by kmp.pro
-    we fixed /usr/local/QtSDK/Desktop/Qt/4.8.0/gcc/mkspecs/features/flex.prf
-    and added config+=flex to kmp.pro to make this happen
+footprint.l
+    this is processed normally with flex via the makefiles produced by FootprintWidget.pro
+    we fixed /usr/local/QtSDK/Desktop/Qt/4.8.0/gcc/mkspecs/features/flex.prf (see below)
+    and added config+=flex to FootprintWidget.pro to make this happen
 
-kmp.g
+footprint.g
 	This must be processed with qlalr manually if it changes. Select the file in Eclipse project Explorer then run
 	External tool called "qlalr tool" from external tools toolbar button.
+
+	
+/usr/local/QtSDK/Desktop/Qt/4.8.0/gcc/mkspecs/features/flex.prf:
+#
+# Flex extra-compiler for handling files specified in the FLEXSOURCES variable - modified by ROB from lex.prf
+#
+
+{
+	QMAKE_FLEX=/usr/bin/flex
+    flex.name = flex ${QMAKE_FILE_IN}
+    flex.input = FLEXSOURCES
+    flex_included {
+        flex.CONFIG += no_link
+    } else {
+        flex.variable_out = GENERATED_SOURCES
+    }
+    isEmpty(QMAKE_FLEXFLAGS_MANGLE):QMAKE_FLEXFLAGS_MANGLE = -P${QMAKE_FILE_BASE} -o$${QMAKE_CPP_MOD_MOC}${QMAKE_FILE_BASE}_lex$${first(QMAKE_EXT_CPP)}
+    QMAKE_FLEXEXTRAFLAGS = $$QMAKE_FLEXFLAGS
+    !yacc_no_name_mangle:QMAKE_FLEXEXTRAFLAGS += $$QMAKE_FLEXFLAGS_MANGLE
+
+    flex.commands = $$QMAKE_FLEX $$QMAKE_FLEXEXTRAFLAGS ${QMAKE_FILE_IN}$$escape_expand(\\n\\t)
+    flex.output = $${QMAKE_CPP_MOD_MOC}${QMAKE_FILE_BASE}_lex$${first(QMAKE_EXT_CPP)}
+
+    silent:flex.commands = @echo Flex ${QMAKE_FILE_IN} && $$flex.commands
+    QMAKE_EXTRA_COMPILERS += flex
+}
+	
