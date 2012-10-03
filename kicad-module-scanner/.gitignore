@@ -1,0 +1,5 @@
+/debug/*
+/release/*
+/kms-temp-file.ps
+*.o
+*.old*

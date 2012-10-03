@@ -1,0 +1,10 @@
+Compiling.
+
+kmp.l
+    this is processed normally with flex via the makefiles produced by kmp.pro
+    we fixed /usr/local/QtSDK/Desktop/Qt/4.8.0/gcc/mkspecs/features/flex.prf
+    and added config+=flex to kmp.pro to make this happen
+
+kmp.g
+	This must be processed with qlalr manually if it changes. Select the file in Eclipse project Explorer then run
+	External tool called "qlalr tool" from external tools toolbar button.

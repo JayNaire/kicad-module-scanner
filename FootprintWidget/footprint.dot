@@ -1,0 +1,318 @@
+digraph {
+
+subgraph Includes {
+	"(0, Footprint)"	->	"(0, Goal)"	[label="{$end}"]
+	"(1, EndModule)"	->	"(0, Footprint)"	[label="{$end}"]
+	"(1, ModulePosition)"	->	"(1, ModuleRecord)"	[label="{Po, beginpad, endmodule}"]
+	"(1, ModuleRecord)"	->	"(1, ModuleRecords)"	[label="{Po, beginpad, endmodule}"]
+	"(1, Pad)"	->	"(1, Pads)"	[label="{Po, beginpad, endmodule}"]
+	"(1, Pads)"	->	"(1, ModuleRecord)"	[label="{Po, beginpad, endmodule}"]
+	"(4, Identifier)"	->	"(0, BeginModule)"	[label="{Po, beginpad, endmodule}"]
+	"(8, EndModule)"	->	"(0, Footprint)"	[label="{$end}"]
+	"(8, ModulePosition)"	->	"(8, ModuleRecord)"	[label="{Po, beginpad, endmodule}"]
+	"(8, ModuleRecord)"	->	"(1, ModuleRecords)"	[label="{Po, beginpad, endmodule}"]
+	"(8, Pad)"	->	"(8, Pads)"	[label="{Po, beginpad, endmodule}"]
+	"(8, Pads)"	->	"(8, ModuleRecord)"	[label="{Po, beginpad, endmodule}"]
+	"(10, Pad)"	->	"(1, Pads)"	[label="{Po, beginpad, endmodule}"]
+	"(10, Pad)"	->	"(8, Pads)"	[label="{Po, beginpad, endmodule}"]
+	"(12, PadAttributes)"	->	"(12, PadRecord)"	[label="{At, Dr, Ne, Po, Sh, endpad}"]
+	"(12, PadNetReference)"	->	"(12, PadRecord)"	[label="{At, Dr, Ne, Po, Sh, endpad}"]
+	"(12, PadOvalDrillRecord)"	->	"(12, PadRecord)"	[label="{At, Dr, Ne, Po, Sh, endpad}"]
+	"(12, PadPosition)"	->	"(12, PadRecord)"	[label="{At, Dr, Ne, Po, Sh, endpad}"]
+	"(12, PadRecord)"	->	"(12, PadRecords)"	[label="{At, Dr, Ne, Po, Sh, endpad}"]
+	"(12, PadRoundDrillRecord)"	->	"(12, PadRecord)"	[label="{At, Dr, Ne, Po, Sh, endpad}"]
+	"(12, PadShapeRecord)"	->	"(12, PadRecord)"	[label="{At, Dr, Ne, Po, Sh, endpad}"]
+	"(57, NetName)"	->	"(12, PadNetReference)"	[label="{At, Dr, Ne, Po, Sh, endpad}"]
+	"(57, NetName)"	->	"(37, PadNetReference)"	[label="{At, Dr, Ne, Po, Sh, endpad}"]
+	"(25, ModuleAttributes)"	->	"(1, ModulePosition)"	[label="{Po, beginpad, endmodule}"]
+	"(25, ModuleAttributes)"	->	"(8, ModulePosition)"	[label="{Po, beginpad, endmodule}"]
+	"(37, PadAttributes)"	->	"(37, PadRecord)"	[label="{At, Dr, Ne, Po, Sh, endpad}"]
+	"(37, PadNetReference)"	->	"(37, PadRecord)"	[label="{At, Dr, Ne, Po, Sh, endpad}"]
+	"(37, PadOvalDrillRecord)"	->	"(37, PadRecord)"	[label="{At, Dr, Ne, Po, Sh, endpad}"]
+	"(37, PadPosition)"	->	"(37, PadRecord)"	[label="{At, Dr, Ne, Po, Sh, endpad}"]
+	"(37, PadRecord)"	->	"(12, PadRecords)"	[label="{At, Dr, Ne, Po, Sh, endpad}"]
+	"(37, PadRoundDrillRecord)"	->	"(37, PadRecord)"	[label="{At, Dr, Ne, Po, Sh, endpad}"]
+	"(37, PadShapeRecord)"	->	"(37, PadRecord)"	[label="{At, Dr, Ne, Po, Sh, endpad}"]
+	"(43, LayerMask)"	->	"(12, PadAttributes)"	[label="{At, Dr, Ne, Po, Sh, endpad}"]
+	"(43, LayerMask)"	->	"(37, PadAttributes)"	[label="{At, Dr, Ne, Po, Sh, endpad}"]
+	"(48, Yoffset)"	->	"(12, PadRoundDrillRecord)"	[label="{At, Dr, Ne, Po, Sh, endpad, padshape}"]
+	"(48, Yoffset)"	->	"(37, PadRoundDrillRecord)"	[label="{At, Dr, Ne, Po, Sh, endpad, padshape}"]
+	"(63, Ypos)"	->	"(12, PadPosition)"	[label="{At, Dr, Ne, Po, Sh, endpad}"]
+	"(63, Ypos)"	->	"(37, PadPosition)"	[label="{At, Dr, Ne, Po, Sh, endpad}"]
+	"(53, DrillY)"	->	"(12, PadOvalDrillRecord)"	[label="{At, Dr, Ne, Po, Sh, endpad}"]
+	"(53, DrillY)"	->	"(37, PadOvalDrillRecord)"	[label="{At, Dr, Ne, Po, Sh, endpad}"]
+	"(75, Orientation)"	->	"(12, PadShapeRecord)"	[label="{At, Dr, Ne, Po, Sh, endpad}"]
+	"(75, Orientation)"	->	"(37, PadShapeRecord)"	[label="{At, Dr, Ne, Po, Sh, endpad}"]
+}
+
+subgraph LRA {
+	0	[shape=record,label="{<0> State 0| <1> $accept: . Goal $end}"]
+	0	->	1	[color="red",label="BeginModule"]
+	0	->	2	[color="red",label="Footprint"]
+	0	->	3	[color="red",label="Goal"]
+	0	->	4	[color="blue",label="beginmodule"]
+
+	1	[shape=record,label="{<0> State 1| <1> Footprint: BeginModule . EndModule| <2> Footprint: BeginModule . ModuleRecords EndModule}"]
+	1	->	5	[color="red",label="EndModule"]
+	1	->	6	[color="red",label="ModulePosition"]
+	1	->	7	[color="red",label="ModuleRecord"]
+	1	->	8	[color="red",label="ModuleRecords"]
+	1	->	9	[color="red",label="Pad"]
+	1	->	10	[color="red",label="Pads"]
+	1	->	11	[color="blue",label="Po"]
+	1	->	12	[color="blue",label="beginpad"]
+	1	->	13	[color="blue",label="endmodule"]
+
+	2	[shape=record,label="{<0> State 2| <1> Goal: Footprint .}"]
+
+	3	[shape=record,label="{<0> State 3| <1> $accept: Goal . $end}"]
+	3	->	79	[color="blue",label="$end"]
+
+	4	[shape=record,label="{<0> State 4| <1> BeginModule: beginmodule . Identifier}"]
+	4	->	80	[color="red",label="Identifier"]
+	4	->	81	[color="blue",label="identifier"]
+
+	5	[shape=record,label="{<0> State 5| <1> Footprint: BeginModule EndModule .}"]
+
+	6	[shape=record,label="{<0> State 6| <1> ModuleRecord: ModulePosition .}"]
+
+	7	[shape=record,label="{<0> State 7| <1> ModuleRecords: ModuleRecord .}"]
+
+	8	[shape=record,label="{<0> State 8| <1> Footprint: BeginModule ModuleRecords . EndModule| <2> ModuleRecords: ModuleRecords . ModuleRecord}"]
+	8	->	14	[color="red",label="EndModule"]
+	8	->	6	[color="red",label="ModulePosition"]
+	8	->	15	[color="red",label="ModuleRecord"]
+	8	->	9	[color="red",label="Pad"]
+	8	->	10	[color="red",label="Pads"]
+	8	->	11	[color="blue",label="Po"]
+	8	->	12	[color="blue",label="beginpad"]
+	8	->	13	[color="blue",label="endmodule"]
+
+	9	[shape=record,label="{<0> State 9| <1> Pads: Pad .}"]
+
+	10	[shape=record,label="{<0> State 10| <1> ModuleRecord: Pads .| <2> Pads: Pads . Pad}"]
+	10	->	16	[color="red",label="Pad"]
+	10	->	12	[color="blue",label="beginpad"]
+
+	11	[shape=record,label="{<0> State 11| <1> ModulePosition: Po . Xpos Ypos Orientation Layer TimeStamp ModuleAttributes}"]
+	11	->	17	[color="red",label="Xpos"]
+	11	->	18	[color="blue",label="number"]
+
+	12	[shape=record,label="{<0> State 12| <1> Pad: beginpad . PadRecords endpad}"]
+	12	->	29	[color="blue",label="At"]
+	12	->	30	[color="blue",label="Dr"]
+	12	->	31	[color="blue",label="Ne"]
+	12	->	32	[color="red",label="PadAttributes"]
+	12	->	33	[color="red",label="PadNetReference"]
+	12	->	34	[color="red",label="PadOvalDrillRecord"]
+	12	->	35	[color="red",label="PadPosition"]
+	12	->	36	[color="red",label="PadRecord"]
+	12	->	37	[color="red",label="PadRecords"]
+	12	->	38	[color="red",label="PadRoundDrillRecord"]
+	12	->	39	[color="red",label="PadShapeRecord"]
+	12	->	40	[color="blue",label="Po"]
+	12	->	41	[color="blue",label="Sh"]
+
+	13	[shape=record,label="{<0> State 13| <1> EndModule: endmodule .| <2> EndModule: endmodule . identifier}"]
+	13	->	78	[color="blue",label="identifier"]
+
+	14	[shape=record,label="{<0> State 14| <1> Footprint: BeginModule ModuleRecords EndModule .}"]
+
+	15	[shape=record,label="{<0> State 15| <1> ModuleRecords: ModuleRecords ModuleRecord .}"]
+
+	16	[shape=record,label="{<0> State 16| <1> Pads: Pads Pad .}"]
+
+	17	[shape=record,label="{<0> State 17| <1> ModulePosition: Po Xpos . Ypos Orientation Layer TimeStamp ModuleAttributes}"]
+	17	->	19	[color="red",label="Ypos"]
+	17	->	20	[color="blue",label="number"]
+
+	18	[shape=record,label="{<0> State 18| <1> Xpos: number .}"]
+
+	19	[shape=record,label="{<0> State 19| <1> ModulePosition: Po Xpos Ypos . Orientation Layer TimeStamp ModuleAttributes}"]
+	19	->	21	[color="red",label="Orientation"]
+	19	->	22	[color="blue",label="number"]
+
+	20	[shape=record,label="{<0> State 20| <1> Ypos: number .}"]
+
+	21	[shape=record,label="{<0> State 21| <1> ModulePosition: Po Xpos Ypos Orientation . Layer TimeStamp ModuleAttributes}"]
+	21	->	23	[color="red",label="Layer"]
+	21	->	24	[color="blue",label="number"]
+
+	22	[shape=record,label="{<0> State 22| <1> Orientation: number .}"]
+
+	23	[shape=record,label="{<0> State 23| <1> ModulePosition: Po Xpos Ypos Orientation Layer . TimeStamp ModuleAttributes}"]
+	23	->	25	[color="red",label="TimeStamp"]
+	23	->	26	[color="blue",label="hex"]
+
+	24	[shape=record,label="{<0> State 24| <1> Layer: number .}"]
+
+	25	[shape=record,label="{<0> State 25| <1> ModulePosition: Po Xpos Ypos Orientation Layer TimeStamp . ModuleAttributes}"]
+	25	->	27	[color="red",label="ModuleAttributes"]
+	25	->	28	[color="blue",label="moduleattributes"]
+
+	26	[shape=record,label="{<0> State 26| <1> TimeStamp: hex .}"]
+
+	27	[shape=record,label="{<0> State 27| <1> ModulePosition: Po Xpos Ypos Orientation Layer TimeStamp ModuleAttributes .}"]
+
+	28	[shape=record,label="{<0> State 28| <1> ModuleAttributes: moduleattributes .}"]
+
+	29	[shape=record,label="{<0> State 29| <1> PadAttributes: At . padtype identifier LayerMask}"]
+	29	->	42	[color="blue",label="padtype"]
+
+	30	[shape=record,label="{<0> State 30| <1> PadRoundDrillRecord: Dr . Diameter Xoffset Yoffset| <2> PadOvalDrillRecord: Dr . Diameter Xoffset Yoffset padshape DrillX DrillY}"]
+	30	->	46	[color="red",label="Diameter"]
+	30	->	47	[color="blue",label="number"]
+
+	31	[shape=record,label="{<0> State 31| <1> PadNetReference: Ne . NetNumber NetName}"]
+	31	->	57	[color="red",label="NetNumber"]
+	31	->	58	[color="blue",label="number"]
+
+	32	[shape=record,label="{<0> State 32| <1> PadRecord: PadAttributes .}"]
+
+	33	[shape=record,label="{<0> State 33| <1> PadRecord: PadNetReference .}"]
+
+	34	[shape=record,label="{<0> State 34| <1> PadRecord: PadOvalDrillRecord .}"]
+
+	35	[shape=record,label="{<0> State 35| <1> PadRecord: PadPosition .}"]
+
+	36	[shape=record,label="{<0> State 36| <1> PadRecords: PadRecord .}"]
+
+	37	[shape=record,label="{<0> State 37| <1> Pad: beginpad PadRecords . endpad| <2> PadRecords: PadRecords . PadRecord}"]
+	37	->	29	[color="blue",label="At"]
+	37	->	30	[color="blue",label="Dr"]
+	37	->	31	[color="blue",label="Ne"]
+	37	->	32	[color="red",label="PadAttributes"]
+	37	->	33	[color="red",label="PadNetReference"]
+	37	->	34	[color="red",label="PadOvalDrillRecord"]
+	37	->	35	[color="red",label="PadPosition"]
+	37	->	61	[color="red",label="PadRecord"]
+	37	->	38	[color="red",label="PadRoundDrillRecord"]
+	37	->	39	[color="red",label="PadShapeRecord"]
+	37	->	40	[color="blue",label="Po"]
+	37	->	41	[color="blue",label="Sh"]
+	37	->	62	[color="blue",label="endpad"]
+
+	38	[shape=record,label="{<0> State 38| <1> PadRecord: PadRoundDrillRecord .}"]
+
+	39	[shape=record,label="{<0> State 39| <1> PadRecord: PadShapeRecord .}"]
+
+	40	[shape=record,label="{<0> State 40| <1> PadPosition: Po . Xpos Ypos}"]
+	40	->	63	[color="red",label="Xpos"]
+	40	->	18	[color="blue",label="number"]
+
+	41	[shape=record,label="{<0> State 41| <1> PadShapeRecord: Sh . PadName PadShape Xsize Ysize Xdelta Ydelta Orientation}"]
+	41	->	65	[color="red",label="PadName"]
+	41	->	66	[color="blue",label="quotedstring"]
+
+	42	[shape=record,label="{<0> State 42| <1> PadAttributes: At padtype . identifier LayerMask}"]
+	42	->	43	[color="blue",label="identifier"]
+
+	43	[shape=record,label="{<0> State 43| <1> PadAttributes: At padtype identifier . LayerMask}"]
+	43	->	44	[color="red",label="LayerMask"]
+	43	->	45	[color="blue",label="hex"]
+
+	44	[shape=record,label="{<0> State 44| <1> PadAttributes: At padtype identifier LayerMask .}"]
+
+	45	[shape=record,label="{<0> State 45| <1> LayerMask: hex .}"]
+
+	46	[shape=record,label="{<0> State 46| <1> PadOvalDrillRecord: Dr Diameter . Xoffset Yoffset padshape DrillX DrillY| <2> PadRoundDrillRecord: Dr Diameter . Xoffset Yoffset}"]
+	46	->	48	[color="red",label="Xoffset"]
+	46	->	49	[color="blue",label="number"]
+
+	47	[shape=record,label="{<0> State 47| <1> Diameter: number .}"]
+
+	48	[shape=record,label="{<0> State 48| <1> PadRoundDrillRecord: Dr Diameter Xoffset . Yoffset| <2> PadOvalDrillRecord: Dr Diameter Xoffset . Yoffset padshape DrillX DrillY}"]
+	48	->	50	[color="red",label="Yoffset"]
+	48	->	51	[color="blue",label="number"]
+
+	49	[shape=record,label="{<0> State 49| <1> Xoffset: number .}"]
+
+	50	[shape=record,label="{<0> State 50| <1> PadOvalDrillRecord: Dr Diameter Xoffset Yoffset . padshape DrillX DrillY| <2> PadRoundDrillRecord: Dr Diameter Xoffset Yoffset .}"]
+	50	->	52	[color="blue",label="padshape"]
+
+	51	[shape=record,label="{<0> State 51| <1> Yoffset: number .}"]
+
+	52	[shape=record,label="{<0> State 52| <1> PadOvalDrillRecord: Dr Diameter Xoffset Yoffset padshape . DrillX DrillY}"]
+	52	->	53	[color="red",label="DrillX"]
+	52	->	54	[color="blue",label="number"]
+
+	53	[shape=record,label="{<0> State 53| <1> PadOvalDrillRecord: Dr Diameter Xoffset Yoffset padshape DrillX . DrillY}"]
+	53	->	55	[color="red",label="DrillY"]
+	53	->	56	[color="blue",label="number"]
+
+	54	[shape=record,label="{<0> State 54| <1> DrillX: number .}"]
+
+	55	[shape=record,label="{<0> State 55| <1> PadOvalDrillRecord: Dr Diameter Xoffset Yoffset padshape DrillX DrillY .}"]
+
+	56	[shape=record,label="{<0> State 56| <1> DrillY: number .}"]
+
+	57	[shape=record,label="{<0> State 57| <1> PadNetReference: Ne NetNumber . NetName}"]
+	57	->	59	[color="red",label="NetName"]
+	57	->	60	[color="blue",label="quotedstring"]
+
+	58	[shape=record,label="{<0> State 58| <1> NetNumber: number .}"]
+
+	59	[shape=record,label="{<0> State 59| <1> PadNetReference: Ne NetNumber NetName .}"]
+
+	60	[shape=record,label="{<0> State 60| <1> NetName: quotedstring .}"]
+
+	61	[shape=record,label="{<0> State 61| <1> PadRecords: PadRecords PadRecord .}"]
+
+	62	[shape=record,label="{<0> State 62| <1> Pad: beginpad PadRecords endpad .}"]
+
+	63	[shape=record,label="{<0> State 63| <1> PadPosition: Po Xpos . Ypos}"]
+	63	->	64	[color="red",label="Ypos"]
+	63	->	20	[color="blue",label="number"]
+
+	64	[shape=record,label="{<0> State 64| <1> PadPosition: Po Xpos Ypos .}"]
+
+	65	[shape=record,label="{<0> State 65| <1> PadShapeRecord: Sh PadName . PadShape Xsize Ysize Xdelta Ydelta Orientation}"]
+	65	->	67	[color="red",label="PadShape"]
+	65	->	68	[color="blue",label="padshape"]
+
+	66	[shape=record,label="{<0> State 66| <1> PadName: quotedstring .}"]
+
+	67	[shape=record,label="{<0> State 67| <1> PadShapeRecord: Sh PadName PadShape . Xsize Ysize Xdelta Ydelta Orientation}"]
+	67	->	69	[color="red",label="Xsize"]
+	67	->	70	[color="blue",label="number"]
+
+	68	[shape=record,label="{<0> State 68| <1> PadShape: padshape .}"]
+
+	69	[shape=record,label="{<0> State 69| <1> PadShapeRecord: Sh PadName PadShape Xsize . Ysize Xdelta Ydelta Orientation}"]
+	69	->	71	[color="red",label="Ysize"]
+	69	->	72	[color="blue",label="number"]
+
+	70	[shape=record,label="{<0> State 70| <1> Xsize: number .}"]
+
+	71	[shape=record,label="{<0> State 71| <1> PadShapeRecord: Sh PadName PadShape Xsize Ysize . Xdelta Ydelta Orientation}"]
+	71	->	73	[color="red",label="Xdelta"]
+	71	->	74	[color="blue",label="number"]
+
+	72	[shape=record,label="{<0> State 72| <1> Ysize: number .}"]
+
+	73	[shape=record,label="{<0> State 73| <1> PadShapeRecord: Sh PadName PadShape Xsize Ysize Xdelta . Ydelta Orientation}"]
+	73	->	75	[color="red",label="Ydelta"]
+	73	->	76	[color="blue",label="number"]
+
+	74	[shape=record,label="{<0> State 74| <1> Xdelta: number .}"]
+
+	75	[shape=record,label="{<0> State 75| <1> PadShapeRecord: Sh PadName PadShape Xsize Ysize Xdelta Ydelta . Orientation}"]
+	75	->	77	[color="red",label="Orientation"]
+	75	->	22	[color="blue",label="number"]
+
+	76	[shape=record,label="{<0> State 76| <1> Ydelta: number .}"]
+
+	77	[shape=record,label="{<0> State 77| <1> PadShapeRecord: Sh PadName PadShape Xsize Ysize Xdelta Ydelta Orientation .}"]
+
+	78	[shape=record,label="{<0> State 78| <1> EndModule: endmodule identifier .}"]
+
+	79	[shape=record,label="{<0> State 79| <1> $accept: Goal $end .}"]
+
+	80	[shape=record,label="{<0> State 80| <1> BeginModule: beginmodule Identifier .}"]
+
+	81	[shape=record,label="{<0> State 81| <1> Identifier: identifier .}"]
+
+}
+
+
+}

@@ -1,0 +1,13 @@
+python
+#import sys
+#sys.path.insert(0, '/internet/downloads/qteclipse/gdb-pretty-printer/python')
+#from libstdcxx.v6.printers import register_libstdcxx_printers
+#register_libstdcxx_printers (None)
+#end
+#python
+import sys
+sys.path.insert(0, '/internet/downloads/qteclipse/gdb-pretty-printer')
+from qt4 import register_qt4_printers 
+register_qt4_printers (None)
+end
+set print pretty 1

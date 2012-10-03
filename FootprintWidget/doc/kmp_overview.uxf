@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.5">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>30</x>
+      <y>50</y>
+      <w>270</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>ModView : public QGraphicsView
+--
+public:
+void addSegment();
+FootprintParser footprintParser;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>310</x>
+      <y>50</y>
+      <w>540</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>"template &lt;typename _Parser, typename _Table, typename _Value = int&gt;"
+class QParser: protected _Table
+--
+inline void setModView(ModView *mw){modView = mw;};
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>130</x>
+      <y>250</y>
+      <w>280</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>FootprintParser:QParser&lt;...&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>380</x>
+      <y>150</y>
+      <w>200</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>30;100;180;30</additional_attributes>
+  </element>
+</diagram>

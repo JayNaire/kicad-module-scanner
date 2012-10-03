@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Kicad Module Scanner Git Repository notes</title>
+</head>
+<body>
+	Date: 20-Apr-2012
+	<br>
+
+	<p style="font: bold size:   large" align="center">kicad_module_scanner</p>
+	<br>A utility to scan, view and copy Kicad footprint (module)
+	libraries.
+	<br>
+	<br>
+	<b>Requires:</b>
+	<br>Qt sdk (qmake, uic etc.)
+	<a href="http://qt.nokia.com/downloads">http://qt.nokia.com/downloads</a><br>
+	<br><strike>A Postscript viewer - okular preferred</strike>
+	<br>gawk (GNU awk)
+	<br>bash + the standard GNU core utilities C++ compiler
+	<br>
+	<br>
+	<b>To compile:</b>
+	<br>If not using Eclipse then:
+	<br>
+	<br>cd /wherever/you/unpacked/the/archive
+	<br>check that kicad_module_scanner.pro is in the current
+	directory (if it isn't you may need to change to a subdirectory)
+	<br>qmake
+	<br>make -f Makefile.Release
+	<br>
+	<br>should produce an executable called kicad_module_scanner
+	<br>
+	<br>
+	<b>Test run:</b>
+	<br>cd /wherever/you/unpacked/the/archive
+	<br>./kicad_module_scanner
+	<br>
+	<strike>On the General Setup tab the only thing to check is
+		the location of the Postscript viewer.</strike>
+	<br>
+	<br>On the File Scanning tab add a file or files to scan.
+	<br>Set the "Output to Database File" to whatever you like.
+	<br>Press "Scan Checked Files"
+	<br>If all goes well the output file you specify will be created.
+	<br>
+	<br>Switch to the Viewing tab.
+	<br>Check the "Footprint Database" file is the same as you
+	specified above.
+	<br>Check no search criteria are specified so you see all the
+	modules in the library.
+	<br>Click Search.
+	<br>The Search Results list should fill up.
+	<br>Click an item in the list.
+	<br>Okular (or whatever you set in General Setup) should spring in
+	to life and display the selected footprint. You may need to faff around
+	with the viewer to get the best presentation mode, zoom etc.
+	<br>
+	<br>Once you get comfortable with the basic idea of kms you can
+	try scanning whole folders of mod files on the Folder Scanning tab.
+	<br>
+	<br>Warnings:
+	<br>Some features are not fully tested and may fall over with
+	"strange" mod files. I have discovered that (very) old footprints used
+	different scaling from the "tenth of a mil" used now. kms knows nothing
+	about them so be warned! Pins without copper annular rings are holes
+	but are not properly dealt with.
+	<br>
+	<br>Postscript Viewer Notes:
+	<br>Pin 1 is always drawn in red - but holes (see above) may mean
+	you don't see them as when Pin 1 is actually, say, a heatsink mounting
+	hole. Pin Pitch dx, dy dimensions should be accurate; "Footprint XxY"
+	are might be wrong sometimes (untested) If refdes or module names look
+	daft, don't blame kms. Some mod files on the web are indeed daft. Some
+	footprints converted from other PCB programs do not get pin rotation
+	correct so they look wrong in kms. (They look wrong in Kicad too.) You
+	have to use Kicad's module editor to sort them out.
+	<br>
+	<br>Enjoy!.
+	<br>
+	<br>Bob.
+	<br>
+	<br>Versions:
+	<br>Developed with: Linux FC16.rockery 3.2.6-3.fc16.x86_64 #1 SMP
+	Mon Feb 13 20:35:42 UTC 2012 x86_64 x86_64 x86_64 GNU/Linux
+	<br>Eclipse IDE for C/C++ Developers
+	<br>Version: Indigo Service Release 1
+	<br>Build id: 20110916-0149
+	<br>
+	<br>Qt C++ Eclipse Integration
+	<br>Version: 1.6.1 QT
+	<br>This program uses Qt version 4.8.0.
+	<br>
+	<br>Note: Using a compiled Qt version 4.8.1 gives this compiler
+	error:
+	<br>/usr/local/Trolltech/Qt-4.8.1/include/QtGui/qgtkstyle.h:45:34:
+	fatal error: QtGui/QCleanlooksStyle: No such file or directory this is
+	a bug in the Qt install build makefiles as many files in the Qt include
+	folder don't get made. The missing files are all capitalised versions
+	of .h files (which are correctly installed) eg: QtGui/QCleanlooksStyle
+	should be a one line file : #include "qcleanlooksstyle.h"
+</body>
+</html>
