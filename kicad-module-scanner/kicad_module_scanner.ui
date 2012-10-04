@@ -27,7 +27,7 @@
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="tabSetup">
        <attribute name="title">
@@ -2213,7 +2213,7 @@ Overwrite</string>
   <customwidget>
    <class>ModView</class>
    <extends>QWidget</extends>
-   <header>/home/root/Projects/kicad-module-scanner/FootprintWidget/ModView.h</header>
+   <header>../FootprintWidget/ModView.h</header>
    <container>1</container>
    <slots>
     <signal>measurementChanged(QPointF,QPointF)</signal>

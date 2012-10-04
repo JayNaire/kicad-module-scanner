@@ -65,6 +65,7 @@
 		<pathentry include="/usr/include" kind="inc" path="" system="true"/>
 		<pathentry kind="src" path=""/>
 		<pathentry kind="out" path=""/>
-		<pathentry kind="lib" library="/home/root/Projects/kicad-module-scanner/FootprintWidget/debug/libFootprintWidget.so" path=""/>
+		<pathentry kind="prj" path="/FootprintWidget"/>
+		<pathentry kind="lib" library="/media/sf_quad-root/media/OneTouch4-Main/git/kicad-module-scanner/FootprintWidget/debug/libFootprintWidget.so" path=""/>
 	</storageModule>
 </cproject>

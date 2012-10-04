@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'kicad_module_scanner.ui'
 **
-** Created: Sat Sep 29 12:07:28 2012
+** Created: Thu Oct 4 09:54:32 2012
 **      by: Qt User Interface Compiler version 4.8.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -37,7 +37,7 @@
 #include <QtGui/QTreeWidget>
 #include <QtGui/QVBoxLayout>
 #include <QtGui/QWidget>
-#include "/home/root/Projects/kicad-module-scanner/FootprintWidget/ModView.h"
+#include "../FootprintWidget/ModView.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -1376,7 +1376,7 @@ public:
         QObject::connect(leCopierScript, SIGNAL(textEdited(QString)), kicad_module_scannerClass, SLOT(onScriptLocationChanged()));
         QObject::connect(leExtractorScript, SIGNAL(textEdited(QString)), kicad_module_scannerClass, SLOT(onScriptLocationChanged()));
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(4);
         cboKeywords->setCurrentIndex(-1);
 
 

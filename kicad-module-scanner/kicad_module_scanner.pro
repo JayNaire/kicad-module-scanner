@@ -16,6 +16,8 @@ SOURCES += main.cpp \
 FORMS += kicad_module_scanner.ui \
     kicad_module_scanner.ui
 RESOURCES += 
-LIBS += -lm -L/home/root/Projects/kicad-module-scanner/FootprintWidget/debug/ -lFootprintWidget
+#LIBS += -lm -L/home/root/Projects/kicad-module-scanner/FootprintWidget/debug/ -lFootprintWidget
+LIBS += -lm -L../FootprintWidget/debug/ -lFootprintWidget
 #LIBS += -l/home/root/Projects/kicad-module-scanner/FootprintWidget/debug/libFootprintWidget.so
-INCLUDEPATH += /home/root/Projects/kicad-module-scanner/FootprintWidget
+#INCLUDEPATH += /home/root/Projects/kicad-module-scanner/FootprintWidget
+INCLUDEPATH += ../FootprintWidget

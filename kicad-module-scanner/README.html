@@ -22,6 +22,14 @@
 	<br>
 	<br>
 	<b>To compile:</b>
+	<br>If using Eclipse:
+	<br>In workspace kicad-module-scanner check the normal suspects are set for your environment:
+	<br> Window->Preferences->QT (add/remove references as necessary. QT 4.8.0 works well for me)
+	<br>In project kicad-module-scanner:
+	<br>Properties->C/C++ Include Paths and Symbols Check there is a valid reference to FootprintWidget (might pay to delete existing reference and use "Add from Workspace" to make sure.
+	<br>In Run configuration environment (Toolbar Run button drop down->Run Configurations->kicad_module_scanner->Environment) check there is an entry:
+	<br>LD_LIBRARY_PATH ../FootprintWidget/debug
+	<br>
 	<br>If not using Eclipse then:
 	<br>
 	<br>cd /wherever/you/unpacked/the/archive<br>check there are two directories FootprintWidget and  kicad_module_scanner
